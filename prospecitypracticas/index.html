@@ -4,13 +4,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="pruebaContrasena.js"></script>
-    <title>Document</title>
   </head>
   <body>
-    <label>entrada</label>
-    <input type="text" id="lolo" />
+  
+    <div class="codigosVisual" style="height:460px; text-align:center;">
+    <canvas id="myCanvas" width="430" height="430" style="border:1px solid #d3d3d3;" onclick="carga()">
+Your browser does not support the HTML canvas tag.</canvas>
+<script>
+function carga(){
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var color="#";
+var x=430;
+var a=0;
+var salto="";
+	for(j=0;j<=430;j++){
+		salto= parseFloat(Math.round(Math.random()*15));
+		j=j+salto;
+		var b=j;
+		
+		var r=Math.round(Math.random()*10);
+		var g=Math.round(Math.random()*10);
+		var b=Math.round(Math.random()*10);
 
-    <button onclick="verificarContrasena()">mostrar</button>
+	color= "#" + r + g + b;
+		ctx.strokeStyle=color;
+		ctx.beginPath();
+		ctx.moveTo(a,j);
+		ctx.lineTo(x, j);
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.strokeStyle=color;
+		ctx.beginPath();
+		ctx.moveTo(j,x);
+		ctx.lineTo(j,a);
+		ctx.stroke();
+		ctx.closePath();
+		}
+}
+</script>
+    </div>
+</div>
+
+<div>
+	<div style="height:460px;">
+
+    </div>
+    <div style="height:460px; text-align:center;">
+    <canvas id="newCanvas" width="430" height="430" style="border:1px solid #d3d3d3;" onclick="drawing()">
+Your browser does not support the HTML canvas tag.</canvas>
+<script>
+function drawing(){
+var s = document.getElementById("newCanvas");
+var stx = s.getContext("2d");
+var ClientRect = s.getBoundingClientRect();
+var	x= Math.round(stx.clientX - ClientRect.left);
+var	y= Math.round(stx.clientY - ClientRect.top);
+alert(x + "- " + y);
+}
+</script>
+    </div>
+</div>  
   </body>
 </html>
